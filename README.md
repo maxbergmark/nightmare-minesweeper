@@ -11,7 +11,10 @@ When the game board is recreated, no bombs are generated on cells where the play
 
 ## Example recreation
 
-TODO
+<p align="center">
+	<img src="/examples/marked_3.png" width="40%" />
+	<img src="/examples/marked_3_recreated.png" width="40%" />
+</p>
 
 ## Installation
 
