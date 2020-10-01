@@ -9,6 +9,17 @@ To make the game actually playable, some things are preserved when the game boar
 
 When the game board is recreated, no bombs are generated on cells where the player has clicked previously. Additionally, bombs that have been correctly marked by the player keep their position. Once the game board has been recreated, the game simulates click events on all cells that the player has clicked previously. Since these cells do not contain any bombs, this will not lead to game over.
 
+## Changing the difficulty
+
+Right now, the method for changing the difficulty is quite rudimentary. There are three factors that change the difficulty of the game:
+
+1. The size of the game board. This can be changed by altering the values of `xdim` and `ydim` when creating the Minesweeper object:
+    
+    `game = MineSweeper(xdim = 25, ydim = 25, n_bombs = 20)`
+
+2. The number of bombs. This can be changed by altering the valus of `n_bombs` on the row mentioned above. 
+3. The time between board regenerations. This can be altered by changing the values of `self.slowest_refresh` and `self.fastest_refresh` within the constructor of the `Minesweeper` class. `self.slowest_refresh` corresponds to the initial refresh time. As bombs are marked on the game board, the refresh time linearly approaches `self.fastest_refresh`, making the game more difficult as it progresses. 
+
 ## Example recreation
 
 <p align="center">
