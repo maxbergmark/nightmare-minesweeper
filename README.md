@@ -12,11 +12,10 @@ When the game board is recreated, no bombs are generated on cells where the play
 ## Example recreation
 
 <p align="center">
-	<img src="/examples/marked_3.png" width="40%" />
-	<img src="/examples/marked_3_recreated.png" width="40%" />
+	<img src="/examples/example.gif" width="60%" />
 </p>
 
-Here we can see how the game board is recreated, while preserving the locations of the correctly marked bombs. It is difficult to visualize, but in the example above, only one cell has been clicked, on row 9, column 4. All revealed cells originate from this cell, in both images. 
+Here we can see how the game board is recreated, while preserving the locations of the correctly marked bombs. The cells that have been clicked are marked with a white `x` in the bottom left corner. 
 
 ## Installation
 
