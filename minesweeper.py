@@ -129,20 +129,24 @@ class MineSweeper:
 		else:
 			self.canvas[y0:y1, x0:x1,:] = self.get_dark_cell()
 
-	def put_text(self, x, y, text, color):
+	def put_text(self, x, y, text, color, font_size = None):
 		font = cv2.FONT_HERSHEY_PLAIN
-		font_size = 0.05 * self.upscale
+		if font_size is None:
+			font_size = 0.05 * self.upscale
 		cv2.putText(self.canvas, text, (x, y), font, font_size, color, 2)
 
 	def draw_text(self, row, col):
-		s = ""
-		if self.board[row][col] > 0 and self.revealed[row][col]:
-			s = str(self.board[row][col])
-
 		text_pos = (int(self.upscale*(col+.3)),int(self.upscale*(row+.8)))
-		self.put_text(*text_pos, s, (0, 255, 0))
-		if self.marked_bombs[row][col]:
+		if not self.marked_bombs[row][col]:
+			if self.board[row][col] > 0 and self.revealed[row][col]:
+				s = str(self.board[row][col])
+				self.put_text(*text_pos, s, (0, 255, 0))
+		else:
 			self.put_text(*text_pos, "B", (0, 0, 255))
+
+	def draw_click(self, row, col):
+		text_pos = (int(self.upscale*(col+.1)),int(self.upscale*(row+.9)))
+		self.put_text(*text_pos, "x", (255, 255, 255), 0.01 * self.upscale)
 
 	def draw_board(self):
 		t0 = time.time()
@@ -151,6 +155,8 @@ class MineSweeper:
 				self.draw_background(row, col)
 				if self.marked_bombs[row][col] or self.revealed[row][col]:
 					self.draw_text(row, col)
+				if (col, row) in self.clicks:
+					self.draw_click(row, col)
 		t1 = time.time()
 		self.draw_stats()
 
