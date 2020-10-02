@@ -58,7 +58,6 @@ class MineSweeper:
 		self.calculate_refresh_time()
 		self.draw_board()
 		t1 = time.time()
-		# print(t1-t0)
 
 	def place_bombs(self):
 		for bx, by in self.correct_markings:
