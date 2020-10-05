@@ -277,7 +277,6 @@ class MineSweeper:
 			self.draw_board()
 
 
-game = MineSweeper(15, 15, 20)
+game = MineSweeper(xdim = 15, ydim = 15, n_mines = 20)
 while game.game_state != GameState.EXIT:
-	print("test", game.game_state)
 	game.main_loop()
